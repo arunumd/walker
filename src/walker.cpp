@@ -34,10 +34,6 @@
 void Walker::rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo) {
     float minimum = 10;
     for (auto& distance : scanInfo->ranges) {
-
-void Walker::rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo) {
-    float minimum = 10;
-    for (auto& item : scanInfo->ranges) {
         if (minimum > distance) {
             minimum = distance;
         }
