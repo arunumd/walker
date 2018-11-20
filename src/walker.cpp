@@ -29,7 +29,7 @@
 #include "std_msgs/String.h"
 #include "sensor_msgs/LaserScan.h"
 #include "geometry_msgs/Twist.h"
-#include "walker.h"
+#include "walker/walker.h"
 
 void Walker::rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo) {
     float minimum = 10;
