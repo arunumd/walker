@@ -1,5 +1,5 @@
 /************************************************************************************************
-* @file      : Implementation file for Week 12 turtlebot walker exercise
+* @file      : Header file for Week 12 turtlebot walker exercise
 * @author    : Arun Kumar Devarajulu
 * @date      : November 19, 2018
 * @copyright : 2018, Arun Kumar Devarajulu
@@ -23,29 +23,33 @@
 *              OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 *              SOFTWARE.
 *
-* @brief     : The walker.cpp contains the definitions for walker.h class methods
+* @brief     : The walker.h will be the header file for walker class which will handle the
+*              movement of turtlebot in an unknown environment by responding to presence of
+*              obstacles in the path
 **************************************************************************************************/
+#pragma once
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "sensor_msgs/LaserScan.h"
-#include "geometry_msgs/Twist.h"
-#include "walker.h"
 
-void Walker::rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo) {
-    float minimum = 10;
-    for (auto& distance : scanInfo->ranges) {
+/**
+* @brief : Class declaration for Walker class
+*/
+class Walker {
+ public:
+    /**
+    *@brief  : Callback function for minimum range subscriber
+    *@param  : Messages received from laser scan topic
+    *@return : None
+    */
+    void rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo);
 
-void Walker::rangeCallback(const sensor_msgs::LaserScan::ConstPtr& scanInfo) {
-    float minimum = 10;
-    for (auto& item : scanInfo->ranges) {
-        if (minimum > distance) {
-            minimum = distance;
-        }
-    }
-    ObstacleRange = minimum;
-    ROS_INFO_STREAM("Obstacle found in : " << ObstacleRange << " units range!");
-}
+    /*
+    *@brief  : Method for finding the obstacle distance
+    *@return : ObstacleRange
+    */
+    float findObstacleRange();
+ private:
+    float ObstacleRange;  //< Variable to store obstacle range
+};
 
-float Walker::findObstacleRange() {
-    return ObstacleRange;
-}
