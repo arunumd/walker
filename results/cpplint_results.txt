@@ -1,0 +1,5 @@
+arun@arun-HP-PC:~/roomba/src/walker/src$ cpplint *.*
+Done processing main.cpp
+Done processing walker.cpp
+arun@arun-HP-PC:~/roomba/src/walker/include/walker$ cpplint *.*
+Done processing walker.h
